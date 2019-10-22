@@ -15,7 +15,7 @@ This part is mostly about Matrix, geometry and math.
 Your starting position is the point (0, 0).
 If the calculated distance is an integer, returned it as int, otherwise it rounded to 2 decimal places.
 *It can not be situation when a few dogs on the line is behind your back (dog dog you dog) - there no such situation in the tests.*
-![example of geometry map](../media/escher_1.jpg)
+<img align="right" width="200" height="200" src="../media/escher_1.jpg" /> 
 4.  [**The secret room**](./6_doors.py) - you receive an integer - the total number of
 doors in the current room. You will need to sort the door numbers in the order
 in which these numbers, expressed in words, go in the alphabetical order.
