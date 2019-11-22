@@ -1,28 +1,34 @@
 def count_consecutive_summers(num):
-    sum = 0
     sums = 1
-    arif_sum = lambda n, a1, d: n * (a1 + (n - 1) * d) // 2
-    for i in range(1, (num + 1) // 2):
-        for j in range(1, (num + 1) // 2):
-            sum = arif_sum((j + 1) // 2, i, 1)
-            # print(sum)
+    arif_sum = lambda n, a1: n * (2 * a1 + (n - 1)) // 2
+    for i in range(1, int((num * 2) ** 0.5) + 1):
+        av = num // i
+        for j in range(av - 2, av + 1):
+            sum = arif_sum(j, i)
+            if (j == (av - 2)) and sum > num:
+                j = (i + av) // 2
+                for k in range(j, 1, -2):
+                    sum = arif_sum(k, i)
+                    # print(sum)
+                    if sum == num:
+                        sums += 1
+                        break
+                    elif sum < num:
+                        if (arif_sum(k + 1, i) == num):
+                            sums += 1
+                        break
+                break
             if sum == num:
-                sums += 1
+                sums +=1
+                break
             elif sum > num:
                 break
-        # while (sum <= num):
-        #     sum += i + k
-        #     k += 1
-        #     if sum == num:
-        #         sums += 1
-        # sum = 0
-    print(sums)
     return sums
 
 if __name__ == '__main__':
     print("Example:")
-    print(count_consecutive_summers(4543532))
-
+    print(count_consecutive_summers(int(input())))
+    print("-" * 25)
     # These "asserts" are used for self-checking and not for an auto-testing
     assert count_consecutive_summers(42) == 4
     assert count_consecutive_summers(99) == 6
